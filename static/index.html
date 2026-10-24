@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRISP-DM Health Intelligence Studio • WHO Longevity & Sleep Quality</title>
+  <meta name="description" content="Dual-Domain Multiple Linear Regression Intelligence Studio comparing WHO Global Life Expectancy and Sleep Health Dataset using CRISP-DM methodology.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Floating Background Ambient Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Global Header & Project Switcher Dropdown (下拉式選單) -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon" id="brand-icon">🌐</div>
+        <div class="brand-text">
+          <h1 id="brand-title">WHO Longevity Lens</h1>
+          <span id="brand-sub">CRISP-DM Econometric Intelligence</span>
+        </div>
+      </a>
+      
+      <!-- Project Switcher Dropdown (下拉式選單) -->
+      <div class="project-selector-container">
+        <label for="project-selector" class="project-selector-label">
+          <span>🔬 Model Domain:</span>
+        </label>
+        <select id="project-selector" class="project-dropdown">
+          <option value="who" selected>🌍 WHO Life Expectancy (2,938 Records)</option>
+          <option value="sleep">🌙 Sleep Health & Quality (100,000 Records)</option>
+        </select>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><button class="nav-btn active" data-target="section-simulator">Simulator</button></li>
+          <li><button class="nav-btn" data-target="section-insights">Insights</button></li>
+          <li><button class="nav-btn" data-target="section-diagnostics">Diagnostics</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Hero Header -->
+    <section class="hero">
+      <div class="hero-badge" id="hero-badge">⚡ Multiple Linear Regression • 193 Nations • 2000–2015</div>
+      <h2 class="hero-title" id="hero-title">Demystifying Global Longevity</h2>
+      <p class="hero-subtitle" id="hero-subtitle">
+        Explore what truly determines national lifespan. Adjust modifiable lifestyle habits, 
+        educational investments, economic infrastructure, and vaccine campaigns to simulate real-world life expectancy outcomes.
+      </p>
+
+      <div class="kpi-row">
+        <div class="kpi-pill">
+          <span class="kpi-val" id="kpi-r2">84.8%</span>
+          <span class="kpi-lbl">Variance Explained (R²)</span>
+        </div>
+        <div class="kpi-pill">
+          <span class="kpi-val" id="kpi-rmse">3.73 yrs</span>
+          <span class="kpi-lbl">Generalization RMSE</span>
+        </div>
+        <div class="kpi-pill">
+          <span class="kpi-val" id="kpi-levers">11 Levers</span>
+          <span class="kpi-lbl">Curated Predictors</span>
+        </div>
+        <div class="kpi-pill">
+          <span class="kpi-val" id="kpi-vif">&lt; 3.0</span>
+          <span class="kpi-lbl">Max VIF (Zero Collinearity)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Presets Bar -->
+    <div class="presets-bar">
+      <div class="presets-label">
+        <span>⚡ Quick Archetype Scenarios:</span>
+      </div>
+      <div class="preset-buttons" id="preset-buttons">
+        <!-- Populated via API -->
+      </div>
+    </div>
+
+    <!-- Simulator Section -->
+    <section id="section-simulator" class="simulator-layout">
+      
+      <!-- Input Controls Column -->
+      <div class="controls-column">
+        <div class="glass-card">
+          <div class="card-header">
+            <div class="card-title">
+              <i>🎛️</i> <span id="controls-panel-title">Policy & Lifestyle Levers</span>
+            </div>
+            <span class="card-badge" id="controls-badge">11 Controllable Inputs</span>
+          </div>
+
+          <div class="card-body">
+            
+            <!-- Active Feature Inspector (Non-Overlapping Real-Time Context) -->
+            <div class="feature-inspector" id="feature-inspector">
+              <div class="inspector-header">
+                <span class="inspector-badge" id="inspector-badge">💡 FEATURE EXPLORER</span>
+                <span class="inspector-impact" id="inspector-impact">Hover or drag any slider</span>
+              </div>
+              <h4 class="inspector-title" id="inspector-title">Schooling Duration (Years)</h4>
+              <p class="inspector-desc" id="inspector-desc">
+                Average years of formal schooling completed. Multiplied with HDI to form the Human Capital Index (β = +3.13), the single strongest positive driver of health literacy and longevity.
+              </p>
+            </div>
+
+            <!-- ================= PROJECT 1: WHO LIFE EXPECTANCY CONTROLS ================= -->
+            <div id="who-controls" class="project-controls-panel">
+              
+              <!-- Group 1: Education & Human Capital -->
+              <div class="controls-group">
+                <div class="group-header">
+                  <span>📚 1. Education & Human Development</span>
+                </div>
+                <div class="group-grid">
+                  
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Schooling Duration
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Schooling Duration</strong><br>Average years of formal schooling received by citizens. Multiplied with HDI to form Human Capital (β = +3.13).</span></span>
+                      </span>
+                      <span class="control-value" id="val-schooling">12.0y</span>
+                    </div>
+                    <input type="range" class="range-slider" id="schooling" min="2" max="22" step="0.5" value="12.0">
+                    <div class="range-limits"><span>2 yrs</span><span>22 yrs</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Income Composition (HDI)
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Income Composition (HDI)</strong><br>United Nations Human Development Index (0.0 to 1.0) assessing living standards and capacity.</span></span>
+                      </span>
+                      <span class="control-value" id="val-income_composition_of_resources">0.65</span>
+                    </div>
+                    <input type="range" class="range-slider" id="income_composition_of_resources" min="0.2" max="1.0" step="0.02" value="0.65">
+                    <div class="range-limits"><span>0.20</span><span>1.00</span></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Group 2: Economic Infrastructure -->
+              <div class="controls-group">
+                <div class="group-header">
+                  <span>💰 2. Economic & Health Spending</span>
+                </div>
+                <div class="group-grid">
+                  
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        GDP per Capita
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>GDP per Capita (USD)</strong><br>Logarithmic diminishing returns (β = +0.65): poverty relief extends lifespan rapidly, tapering at high income.</span></span>
+                      </span>
+                      <span class="control-value" id="val-gdp">$6,500</span>
+                    </div>
+                    <input type="range" class="range-slider" id="gdp" min="100" max="80000" step="250" value="6500">
+                    <div class="range-limits"><span>$100</span><span>$80,000</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Healthcare Spending
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Health Expenditure (% of GDP)</strong><br>Capital investment into clinics, hospital beds, and clinical staff (β = +0.34).</span></span>
+                      </span>
+                      <span class="control-value" id="val-percentage_expenditure">$500</span>
+                    </div>
+                    <input type="range" class="range-slider" id="percentage_expenditure" min="0" max="10000" step="50" value="500">
+                    <div class="range-limits"><span>$0</span><span>$10,000</span></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Group 3: Vaccines & Pediatric Survival -->
+              <div class="controls-group">
+                <div class="group-header">
+                  <span>💉 3. Immunization Shield & Child Health</span>
+                </div>
+                <div class="group-grid">
+                  
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Polio Coverage
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Polio Immunization (%)</strong><br>Childhood vaccination coverage against polio outbreaks (part of β = +0.83 shield).</span></span>
+                      </span>
+                      <span class="control-value" id="val-polio">85%</span>
+                    </div>
+                    <input type="range" class="range-slider" id="polio" min="20" max="99" step="1" value="85">
+                    <div class="range-limits"><span>20%</span><span>99%</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Diphtheria (DTP3)
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Diphtheria Coverage (%)</strong><br>DTP3 coverage preventing fatal infant respiratory infections.</span></span>
+                      </span>
+                      <span class="control-value" id="val-diphtheria">85%</span>
+                    </div>
+                    <input type="range" class="range-slider" id="diphtheria" min="20" max="99" step="1" value="85">
+                    <div class="range-limits"><span>20%</span><span>99%</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Hepatitis B
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Hepatitis B Coverage (%)</strong><br>Coverage preventing lifelong chronic liver cirrhosis and cancer in adulthood.</span></span>
+                      </span>
+                      <span class="control-value" id="val-hepatitis_b">85%</span>
+                    </div>
+                    <input type="range" class="range-slider" id="hepatitis_b" min="20" max="99" step="1" value="85">
+                    <div class="range-limits"><span>20%</span><span>99%</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Under-Five Mortality
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Under-Five Mortality</strong><br>Child deaths under age 5 per 1,000 live births. Captures pediatric healthcare quality.</span></span>
+                      </span>
+                      <span class="control-value" id="val-under_five_deaths">20</span>
+                    </div>
+                    <input type="range" class="range-slider" id="under_five_deaths" min="1" max="180" step="1" value="20">
+                    <div class="range-limits"><span>1 / 1k</span><span>180 / 1k</span></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Group 4: Adult Mortality & Epidemics -->
+              <div class="controls-group">
+                <div class="group-header">
+                  <span>⚠️ 4. Chronic Stress, Nutrition & Epidemics</span>
+                </div>
+                <div class="group-grid">
+                  
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Adult Mortality (15-60y)
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Adult Mortality (15-60y)</strong><br>Risk of dying in prime working years from cardiovascular disease and chronic stress (β = -1.82).</span></span>
+                      </span>
+                      <span class="control-value" id="val-adult_mortality">150</span>
+                    </div>
+                    <input type="range" class="range-slider" id="adult_mortality" min="20" max="600" step="5" value="150">
+                    <div class="range-limits"><span>20 / 1k</span><span>600 / 1k</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        HIV/AIDS Deaths
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>HIV/AIDS Death Rate</strong><br>Acute communicable drag on national longevity (β = -3.90).</span></span>
+                      </span>
+                      <span class="control-value" id="val-hiv_aids">0.2</span>
+                    </div>
+                    <input type="range" class="range-slider" id="hiv_aids" min="0.1" max="30" step="0.1" value="0.2">
+                    <div class="range-limits"><span>0.1</span><span>30.0</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Body Mass Index (BMI)
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Body Mass Index (BMI)</strong><br>Population average BMI. In developing contexts, reflects caloric sufficiency (β = +0.33).</span></span>
+                      </span>
+                      <span class="control-value" id="val-bmi">25.0</span>
+                    </div>
+                    <input type="range" class="range-slider" id="bmi" min="15" max="42" step="0.5" value="25.0">
+                    <div class="range-limits"><span>15</span><span>42</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Adolescent Thinness
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Adolescent Thinness (1-19y)</strong><br>Prevalence of thinness among youth. Marker of chronic malnourishment (β = -0.33).</span></span>
+                      </span>
+                      <span class="control-value" id="val-thinness_1_19_years">4.5%</span>
+                    </div>
+                    <input type="range" class="range-slider" id="thinness_1_19_years" min="0.5" max="25" step="0.2" value="4.5">
+                    <div class="range-limits"><span>0.5%</span><span>25%</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Alcohol Consumption
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Alcohol Consumption</strong><br>Recorded litres per capita (ages 15+). Correlated with developmental affluence (β = +0.37).</span></span>
+                      </span>
+                      <span class="control-value" id="val-alcohol">4.5L</span>
+                    </div>
+                    <input type="range" class="range-slider" id="alcohol" min="0" max="18" step="0.2" value="4.5">
+                    <div class="range-limits"><span>0 L</span><span>18 L</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Measles Incidence
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Measles Incidence</strong><br>Reported measles cases per 1,000 population. Indicator of cold-chain and surveillance failure.</span></span>
+                      </span>
+                      <span class="control-value" id="val-measles">15</span>
+                    </div>
+                    <input type="range" class="range-slider" id="measles" min="0" max="2000" step="25" value="15">
+                    <div class="range-limits"><span>0</span><span>2,000</span></div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ================= PROJECT 2: SLEEP HEALTH CONTROLS ================= -->
+            <div id="sleep-controls" class="project-controls-panel" style="display: none;">
+              
+              <!-- Sleep Group 1: Duration & Sleep Architecture -->
+              <div class="controls-group">
+                <div class="group-header">
+                  <span>🌙 1. Sleep Architecture & Duration</span>
+                </div>
+                <div class="group-grid">
+                  
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Nightly Sleep Duration
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Sleep Duration (Hours)</strong><br>Total hours of sleep per night. Baseline positive driver (β = +0.634, +0.50 pts/hr).</span></span>
+                      </span>
+                      <span class="control-value" id="val-sleep_duration_hrs">6.4h</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="sleep_duration_hrs" min="3.0" max="11.0" step="0.1" value="6.4">
+                    <div class="range-limits"><span>3.0h</span><span>11.0h</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Nocturnal Awakenings
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Nocturnal Awakenings</strong><br>Number of wake episodes per night. Disrupts sleep architecture (β = -0.359).</span></span>
+                      </span>
+                      <span class="control-value" id="val-wake_episodes_per_night">3 wakes</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="wake_episodes_per_night" min="0" max="8" step="1" value="3">
+                    <div class="range-limits"><span>0 wakes</span><span>8 wakes</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        REM Sleep Share (%)
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>REM Sleep Share (%)</strong><br>Rapid Eye Movement percentage. Crucial for memory and emotional health (β = +0.183).</span></span>
+                      </span>
+                      <span class="control-value" id="val-rem_percentage">20.2%</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="rem_percentage" min="10.0" max="35.0" step="0.5" value="20.2">
+                    <div class="range-limits"><span>10.0%</span><span>35.0%</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Sleep Onset Latency
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Sleep Latency (Minutes)</strong><br>Time taken to fall asleep. Prolonged latency reflects pre-sleep hyper-arousal (β = -0.177).</span></span>
+                      </span>
+                      <span class="control-value" id="val-sleep_latency_mins">20 min</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="sleep_latency_mins" min="5" max="60" step="1" value="20">
+                    <div class="range-limits"><span>5 min</span><span>60 min</span></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Sleep Group 2: Psychological Stress & Environment -->
+              <div class="controls-group">
+                <div class="group-header">
+                  <span>🧠 2. Psychological Load & Bedroom Climate</span>
+                </div>
+                <div class="group-grid">
+                  
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Daytime Stress Rating
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Daytime Stress (0-10)</strong><br>Psychological stress index. Elevated evening cortisol impairs deep sleep (β = -0.375).</span></span>
+                      </span>
+                      <span class="control-value" id="val-stress_score">5.7 / 10</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="stress_score" min="0.0" max="10.0" step="0.1" value="5.7">
+                    <div class="range-limits"><span>0 (None)</span><span>10 (Severe)</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Bedroom Temperature
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Bedroom Temperature (°C)</strong><br>Cool bedroom (18–20°C) facilitates core body temperature decline (β = -0.036).</span></span>
+                      </span>
+                      <span class="control-value" id="val-room_temperature_celsius">20.5°C</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="room_temperature_celsius" min="15.0" max="28.0" step="0.5" value="20.5">
+                    <div class="range-limits"><span>15.0°C</span><span>28.0°C</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Pre-Bed Alcohol
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Alcohol Before Bed (Units)</strong><br>Alcohol units consumed before bed. Disrupts second-half REM sleep.</span></span>
+                      </span>
+                      <span class="control-value" id="val-alcohol_units_before_bed">0.6 u</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="alcohol_units_before_bed" min="0.0" max="6.0" step="0.2" value="0.6">
+                    <div class="range-limits"><span>0 u</span><span>6.0 u</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Body Mass Index (BMI)
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Body Mass Index (BMI)</strong><br>Physical metabolic profile baseline.</span></span>
+                      </span>
+                      <span class="control-value" id="val-bmi_sleep">26.3</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="bmi_sleep" data-target-key="bmi" min="15.0" max="42.0" step="0.5" value="26.3">
+                    <div class="range-limits"><span>15.0</span><span>42.0</span></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Sleep Group 3: Clinical & Circadian Modifiers -->
+              <div class="controls-group">
+                <div class="group-header">
+                  <span>⚡ 3. Clinical & Circadian Modifiers</span>
+                </div>
+                <div class="group-grid">
+                  
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Mental Health Status
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Mental Health Status</strong><br>1 = Healthy emotional baseline, 0 = Clinical Anxiety / Depression (β = +0.400).</span></span>
+                      </span>
+                      <span class="control-value" id="val-is_healthy_mental">Healthy (1)</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="is_healthy_mental" min="0" max="1" step="1" value="1">
+                    <div class="range-limits"><span>Anxiety / Dep (0)</span><span>Healthy (1)</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Sleep Disorder Risk
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Sleep Disorder Risk</strong><br>Screening risk for sleep apnea or chronic insomnia (β = -0.115).</span></span>
+                      </span>
+                      <span class="control-value" id="val-has_sleep_disorder">None (0)</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="has_sleep_disorder" min="0" max="1" step="1" value="0">
+                    <div class="range-limits"><span>Healthy (0)</span><span>Risk (1)</span></div>
+                  </div>
+
+                  <div class="control-item">
+                    <div class="control-header">
+                      <span class="control-label">
+                        Shift Work Schedule
+                        <span class="tooltip-trigger" tabindex="0">ℹ️<span class="tooltip-bubble"><strong>Shift Work Schedule</strong><br>Night or rotating shift work causing biological circadian desynchrony (β = -0.122).</span></span>
+                      </span>
+                      <span class="control-value" id="val-shift_work">Daytime (0)</span>
+                    </div>
+                    <input type="range" class="range-slider sleep-slider" id="shift_work" min="0" max="1" step="1" value="0">
+                    <div class="range-limits"><span>Standard (0)</span><span>Shift Work (1)</span></div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Output Display Column -->
+      <div class="display-column">
+        
+        <!-- Main Lifespan / Sleep Quality Gauge Card -->
+        <div class="glass-card gauge-card">
+          <div class="gauge-glow"></div>
+          <div class="gauge-title" id="gauge-title">Simulated National Longevity</div>
+          
+          <div class="gauge-metric">
+            <span id="gauge-metric">69.15</span><span class="gauge-unit" id="gauge-unit">years</span>
+          </div>
+
+          <div id="gauge-delta" class="gauge-delta delta-positive">
+            ▲ +0.00 yrs vs World Baseline (69.15y)
+          </div>
+
+          <p class="gauge-subtitle" id="gauge-subtitle">
+            Calculated via OLS Multiple Linear Regression (RFECV winning subset of 11 core predictors).
+          </p>
+
+          <!-- Composite Indicators Grid -->
+          <div class="composite-grid">
+            <div class="composite-box">
+              <div class="composite-label" id="comp-lbl-1">Human Capital Index</div>
+              <div class="composite-val" id="comp-val-1">7.80</div>
+            </div>
+            <div class="composite-box">
+              <div class="composite-label" id="comp-lbl-2">Immunization Shield</div>
+              <div class="composite-val" id="comp-val-2">85.0%</div>
+            </div>
+            <div class="composite-box">
+              <div class="composite-label" id="comp-lbl-3">Log GDP Index</div>
+              <div class="composite-val" id="comp-val-3">8.78</div>
+            </div>
+            <div class="composite-box">
+              <div class="composite-label" id="comp-lbl-4">Log HIV Index</div>
+              <div class="composite-val" id="comp-val-4">0.18</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waterfall Tornado Impact Card -->
+        <div class="glass-card waterfall-card">
+          <div class="waterfall-header">
+            <div class="waterfall-title" id="waterfall-title">📊 Factor Contribution Breakdown (Years)</div>
+            <div class="waterfall-legend">
+              <div class="legend-item"><div class="legend-dot legend-green"></div><span id="legend-pos">Positive Impact</span></div>
+              <div class="legend-item"><div class="legend-dot legend-red"></div><span id="legend-neg">Negative Impact</span></div>
+            </div>
+          </div>
+
+          <div class="waterfall-list" id="waterfall-list">
+            <!-- Populated via API in real time -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Section 2: Human Insights -->
+    <section id="section-insights" class="insights-section">
+      <div class="section-header">
+        <h3 class="section-title" id="insights-title">Daily Life & Public Health Insights</h3>
+        <p class="section-subtitle" id="insights-subtitle">
+          Translating standardized regression beta coefficients into actionable human realities.
+        </p>
+      </div>
+
+      <!-- WHO Insights Grid -->
+      <div class="insights-grid" id="who-insights">
+        <div class="insight-card">
+          <div class="insight-icon icon-green">🎓</div>
+          <h4 class="insight-headline">1. Compounding Power of Education (+3.13 Years)</h4>
+          <p class="insight-text">
+            Education interacts with resource access as the strongest positive driver of longevity. 
+            Formal schooling dramatically multiplies health literacy, preventive behaviors, maternal care, and medication compliance.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-icon icon-blue">📈</div>
+          <h4 class="insight-headline">2. Economic Diminishing Returns (+0.65 Years)</h4>
+          <p class="insight-text">
+            Moving from extreme poverty ($500) to middle income ($5,000 GDP) creates massive longevity surges by funding clean sanitation and clinics. Beyond $25,000, income yields diminishing returns unless invested into healthy lifestyle habits.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-icon icon-rose">⚠️</div>
+          <h4 class="insight-headline">3. Mid-Life Adult Mortality Drag (-1.82 Years)</h4>
+          <p class="insight-text">
+            Mortality in working-age adults (ages 15 to 60) represents the sharpest societal drag, reflecting untreated cardiovascular crises, 
+            occupational injuries, and chronic stress in the core productive labor force.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-icon icon-amber">💉</div>
+          <h4 class="insight-headline">4. The Childhood Vaccine Shield (+0.83 Years)</h4>
+          <p class="insight-text">
+            Routine childhood immunization (Polio, Diphtheria, Hep B) forms an irreplaceable protective barrier, eliminating epidemics that historically killed children before their tenth birthday.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sleep Health Insights Grid -->
+      <div class="insights-grid" id="sleep-insights" style="display: none;">
+        <div class="insight-card">
+          <div class="insight-icon icon-green">⏰</div>
+          <h4 class="insight-headline">1. The Primacy of Sleep Duration (+0.634 pts)</h4>
+          <p class="insight-text">
+            Sleep duration is the single strongest positive driver of perceived sleep quality (+0.497 pts per hour). 
+            Targeting 7.5 to 8.5 hours yields the highest restorative recovery and cognitive baseline.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-icon icon-rose">⚡</div>
+          <h4 class="insight-headline">2. Sleep Continuity vs. Fragmentation (-0.359 pts)</h4>
+          <p class="insight-text">
+            Each nocturnal wake episode inflicts a -0.186 point penalty on quality. Eliminating nighttime interruptions 
+            is just as important as extending total time in bed.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-icon icon-blue">🧘</div>
+          <h4 class="insight-headline">3. Daytime Stress Mitigation (-0.375 pts)</h4>
+          <p class="insight-text">
+            Subjective daytime stress is the most acute behavioral drag on sleep quality. High pre-sleep cortisol suppresses 
+            slow-wave physical restoration, demanding structured evening wind-down rituals.
+          </p>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-icon icon-amber">❄️</div>
+          <h4 class="insight-headline">4. Circadian & Bedroom Climate (-0.122 / -0.036)</h4>
+          <p class="insight-text">
+            Shift work inflicts an automatic -0.44 point circadian handicap, while overheated bedrooms hamper the nocturnal core body temperature drop required for deep NREM sleep.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Model Diagnostics & Transparency -->
+    <section id="section-diagnostics" class="diagnostics-section">
+      <div class="section-header">
+        <h3 class="section-title">CRISP-DM Econometric Diagnostics</h3>
+        <p class="section-subtitle" id="diagnostics-subtitle">
+          Statistical verification of OLS assumptions, feature selection funnels, and collinearity elimination.
+        </p>
+      </div>
+
+      <div class="glass-card" style="padding: 24px; margin-bottom: 24px;">
+        <div class="card-title" style="margin-bottom: 16px;">
+          <span>📋 Model Architecture Comparison Table (Held-Out Test Set)</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Model Candidate</th>
+                <th>Features</th>
+                <th>Test R²</th>
+                <th>Test Adj R²</th>
+                <th>Test MSE</th>
+                <th>Test RMSE</th>
+                <th>BIC</th>
+                <th>Decision</th>
+              </tr>
+            </thead>
+            <tbody id="model-comparison-body">
+              <!-- Populated dynamically via API -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 4 OLS Core Assumptions -->
+        <div class="assumptions-grid">
+          
+          <div class="assumption-box">
+            <div class="assumption-status">
+              <span class="assumption-title">1. Linearity</span>
+              <span class="status-tag">PASSED</span>
+            </div>
+            <div class="assumption-metric" id="diag-linearity">Observed vs Fitted r = 0.9207</div>
+          </div>
+
+          <div class="assumption-box">
+            <div class="assumption-status">
+              <span class="assumption-title">2. Normality</span>
+              <span class="status-tag">PASSED</span>
+            </div>
+            <div class="assumption-metric" id="diag-normality">Skew = -0.254 (Asymptotic CLT)</div>
+          </div>
+
+          <div class="assumption-box">
+            <div class="assumption-status">
+              <span class="assumption-title">3. Homoscedasticity</span>
+              <span class="status-tag">AUDITED</span>
+            </div>
+            <div class="assumption-metric" id="diag-homoscedasticity">Balanced rectangular residual cloud</div>
+          </div>
+
+          <div class="assumption-box">
+            <div class="assumption-status">
+              <span class="assumption-title">4. Independence</span>
+              <span class="status-tag">PASSED</span>
+            </div>
+            <div class="assumption-metric" id="diag-independence">Durbin-Watson d = 2.0146 [1.5-2.5]</div>
+          </div>
+
+        </div>
+
+        <!-- Gallery Grid of Diagnostic Plots -->
+        <div class="gallery-grid" id="diagnostics-gallery">
+          <div class="plot-card" style="grid-column: 1 / -1;">
+            <img id="plot-metrics" src="/outputs/feature_selection_metrics_comparison.png" alt="Feature Selection Metrics Engine" class="plot-img">
+            <div class="plot-caption" id="caption-metrics">Feature Selection Optimization Funnel: (1) Cross-Validated R² & Adj R² vs Feature Count • (2) Cross-Validated RMSE Curve • (3) Cross-Validated MSE Curve • (4) Test Error (MSE & RMSE) Comparison Across Models</div>
+          </div>
+          <div class="plot-card">
+            <img id="plot-diagnostics" src="/outputs/regression_diagnostics.png" alt="Regression Diagnostics" class="plot-img">
+            <div class="plot-caption">4-Panel OLS Diagnostics (Linearity, Q-Q, Residuals, Betas)</div>
+          </div>
+          <div class="plot-card">
+            <img id="plot-coefficients" src="/outputs/feature_coefficients.png" alt="Feature Coefficients" class="plot-img">
+            <div class="plot-caption">Standardized Beta Coefficients (Effect Size in Units per 1 SD)</div>
+          </div>
+          <div class="plot-card">
+            <img id="plot-rfecv" src="/outputs/rfecv_curve.png" alt="RFECV Curve" class="plot-img">
+            <div class="plot-caption">Recursive Feature Elimination (RFECV RMSE Minimum at k = 11)</div>
+          </div>
+          <div class="plot-card">
+            <img id="plot-vif" src="/outputs/vif_comparison.png" alt="VIF Comparison" class="plot-img">
+            <div class="plot-caption">Multicollinearity Audit (All Final Features VIF &lt; 3.0)</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Dual Health Intelligence Studio • Developed with CRISP-DM Methodology & FastAPI</p>
+      <p style="margin-top: 6px; color: var(--text-dim);" id="footer-details">WHO Life Expectancy (2,938 records) & Sleep Health Dataset (100,000 records) • Interactive OLS Multiple Linear Regression.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

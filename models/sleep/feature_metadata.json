@@ -1,0 +1,94 @@
+{
+    "target_variable": "sleep_quality_score",
+    "units": "rating (1.0 to 10.0)",
+    "selected_features": [
+        "sleep_duration_hrs",
+        "wake_episodes_per_night",
+        "stress_score",
+        "is_healthy_mental",
+        "has_sleep_disorder",
+        "shift_work",
+        "sleep_latency_mins",
+        "rem_percentage",
+        "room_temperature_celsius",
+        "alcohol_units_before_bed",
+        "bmi"
+    ],
+    "coefficients": {
+        "const": 4.871144000000001,
+        "sleep_duration_hrs": 0.6336021021266455,
+        "wake_episodes_per_night": -0.35804704068217386,
+        "stress_score": -0.3755801185054925,
+        "is_healthy_mental": 0.3994609511985911,
+        "has_sleep_disorder": -0.11716101029842071,
+        "shift_work": -0.12118441063149833,
+        "sleep_latency_mins": -0.17517984198057612,
+        "rem_percentage": 0.18182364533672613,
+        "room_temperature_celsius": -0.037771019755592,
+        "alcohol_units_before_bed": 0.007322391520499141,
+        "bmi": 0.024141664563892985
+    },
+    "pvalues": {
+        "const": 0.0,
+        "sleep_duration_hrs": 0.0,
+        "wake_episodes_per_night": 0.0,
+        "stress_score": 0.0,
+        "is_healthy_mental": 0.0,
+        "has_sleep_disorder": 2.8943571388603118e-245,
+        "shift_work": 0.0,
+        "sleep_latency_mins": 0.0,
+        "rem_percentage": 0.0,
+        "room_temperature_celsius": 1.998212649448948e-59,
+        "alcohol_units_before_bed": 0.003919920195563248,
+        "bmi": 1.6157703331595756e-22
+    },
+    "r_squared": 0.7625,
+    "adj_r_squared": 0.7625,
+    "f_statistic": 29186.5,
+    "model_architecture_comparison": [
+        {
+            "Model Candidate": "M1: Baseline Raw OLS",
+            "Feature Count": 24,
+            "Test R2": 0.762,
+            "Test Adj R2": 0.7617,
+            "Test MSE (Points^2)": 0.5463,
+            "Test RMSE (Points)": 0.7391,
+            "Test MAE (Points)": 0.5907,
+            "BIC": 177495.1,
+            "Decision": "Overfitted / Redundant"
+        },
+        {
+            "Model Candidate": "M2: Filter Only (VIF)",
+            "Feature Count": 21,
+            "Test R2": 0.7619,
+            "Test Adj R2": 0.7616,
+            "Test MSE (Points^2)": 0.5467,
+            "Test RMSE (Points)": 0.7394,
+            "Test MAE (Points)": 0.5908,
+            "BIC": 177532.2,
+            "Decision": "Evaluated Candidate"
+        },
+        {
+            "Model Candidate": "M3: VIF + LassoCV",
+            "Feature Count": 14,
+            "Test R2": 0.7619,
+            "Test Adj R2": 0.7617,
+            "Test MSE (Points^2)": 0.5467,
+            "Test RMSE (Points)": 0.7394,
+            "Test MAE (Points)": 0.5909,
+            "BIC": 177467.6,
+            "Decision": "Evaluated Candidate"
+        },
+        {
+            "Model Candidate": "M4: VIF + RFECV Winner",
+            "Feature Count": 11,
+            "Test R2": 0.7619,
+            "Test Adj R2": 0.7617,
+            "Test MSE (Points^2)": 0.5467,
+            "Test RMSE (Points)": 0.7394,
+            "Test MAE (Points)": 0.5909,
+            "BIC": 177435.2,
+            "Decision": "Selected Winner"
+        }
+    ]
+}

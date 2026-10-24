@@ -1,0 +1,91 @@
+{
+    "target_variable": "life_expectancy",
+    "units": "years",
+    "selected_features": [
+        "adult_mortality",
+        "under_five_deaths",
+        "alcohol",
+        "percentage_expenditure",
+        "measles",
+        "bmi",
+        "log_hiv",
+        "log_gdp",
+        "thinness__1_19_years",
+        "human_capital",
+        "immunization_index"
+    ],
+    "coefficients": {
+        "const": 69.14901793339024,
+        "adult_mortality": -1.8207747490867974,
+        "under_five_deaths": -0.19226561631986583,
+        "alcohol": 0.37375074032691347,
+        "percentage_expenditure": 0.3372688129207855,
+        "measles": -0.3292707902814895,
+        "bmi": 0.33021080936258207,
+        "log_hiv": -3.9036945343202003,
+        "log_gdp": 0.6454240590866478,
+        "thinness__1_19_years": -0.3343397761356149,
+        "human_capital": 3.1252573671135147,
+        "immunization_index": 0.8283329595931015
+    },
+    "pvalues": {
+        "const": 0.0,
+        "adult_mortality": 4.092926858684663e-64,
+        "under_five_deaths": 0.053853359147692306,
+        "alcohol": 0.0001587342615751799,
+        "percentage_expenditure": 0.0004831333576570563,
+        "measles": 0.00024202044251373205,
+        "bmi": 0.0014338760985717143,
+        "log_hiv": 1.9373502655180532e-235,
+        "log_gdp": 1.0828934544760915e-08,
+        "thinness__1_19_years": 0.0019216400280822332,
+        "human_capital": 2.6727690787496243e-114,
+        "immunization_index": 3.2974988235126295e-21
+    },
+    "model_architecture_comparison": [
+        {
+            "Model Candidate": "M1: Baseline Raw OLS",
+            "Feature Count": 19,
+            "Test R2": 0.8221,
+            "Test Adj R2": 0.8162,
+            "Test MSE (Years^2)": 15.3845,
+            "Test RMSE (Years)": 3.9223,
+            "Test MAE (Years)": 2.9077,
+            "BIC": 13329.4,
+            "Decision": "Overfitted / Collinear"
+        },
+        {
+            "Model Candidate": "M2: Filter Only (VIF)",
+            "Feature Count": 14,
+            "Test R2": 0.8402,
+            "Test Adj R2": 0.8363,
+            "Test MSE (Years^2)": 13.8236,
+            "Test RMSE (Years)": 3.718,
+            "Test MAE (Years)": 2.7818,
+            "BIC": 12932.3,
+            "Decision": "Evaluated Candidate"
+        },
+        {
+            "Model Candidate": "M3: VIF + LassoCV",
+            "Feature Count": 13,
+            "Test R2": 0.8403,
+            "Test Adj R2": 0.8367,
+            "Test MSE (Years^2)": 13.8156,
+            "Test RMSE (Years)": 3.7169,
+            "Test MAE (Years)": 2.7821,
+            "BIC": 12924.6,
+            "Decision": "Evaluated Candidate"
+        },
+        {
+            "Model Candidate": "M4: VIF + RFECV",
+            "Feature Count": 11,
+            "Test R2": 0.8391,
+            "Test Adj R2": 0.836,
+            "Test MSE (Years^2)": 13.9218,
+            "Test RMSE (Years)": 3.7312,
+            "Test MAE (Years)": 2.7978,
+            "BIC": 12913.2,
+            "Decision": "Selected Winner"
+        }
+    ]
+}
