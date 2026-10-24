@@ -37,7 +37,6 @@ app.mount("/outputs", StaticFiles(directory=OUTPUTS_DIR), name="outputs")
 
 # ----------------- 1. Load WHO Life Expectancy Model -----------------
 who_scaler = joblib.load(os.path.join(MODELS_DIR, "scaler.pkl"))
-who_model = joblib.load(os.path.join(MODELS_DIR, "ols_model.pkl"))
 with open(os.path.join(MODELS_DIR, "feature_metadata.json"), "r") as f:
     who_metadata = json.load(f)
 
@@ -48,7 +47,6 @@ who_intercept = who_coefficients.get("const", 69.149)
 # ----------------- 2. Load Sleep Health Model -----------------
 sleep_models_dir = os.path.join(MODELS_DIR, "sleep")
 sleep_scaler = joblib.load(os.path.join(sleep_models_dir, "scaler.pkl"))
-sleep_model = joblib.load(os.path.join(sleep_models_dir, "ols_model.pkl"))
 with open(os.path.join(sleep_models_dir, "feature_metadata.json"), "r") as f:
     sleep_metadata = json.load(f)
 
